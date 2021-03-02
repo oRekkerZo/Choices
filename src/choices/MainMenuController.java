@@ -38,7 +38,7 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        titleText.setText("Choices");
+        titleText.setText("Choices To Get To 7-11");
         authorText.setText("By: Ricky");
         button.setText("Start Game");
         exitButton.setText("Exit Game");
