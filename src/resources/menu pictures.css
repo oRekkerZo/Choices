@@ -1,0 +1,14 @@
+.sevenEleven{
+    -fx-background-image: url("pictures/7-Eleven.jpg");
+    -fx-background-size: 100%;
+}
+
+.angryPepe{
+    -fx-background-image: url("pictures/angry-pepe.png");
+    -fx-background-size: 100%;
+}
+
+.angryPepeTalk{
+    -fx-background-image: url("pictures/word-cloud.png");
+    -fx-background-size: 100%;
+}
