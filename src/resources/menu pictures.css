@@ -12,3 +12,8 @@
     -fx-background-image: url("pictures/word-cloud.png");
     -fx-background-size: 100%;
 }
+
+.gameplayScene{
+    -fx-background-image: url("pictures/openDoor.png");
+    -fx-background-size: 100%;
+}

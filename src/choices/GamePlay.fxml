@@ -47,5 +47,6 @@
          </font>
       </Text>
       <Text fx:id="volumeText" layoutX="84.0" layoutY="713.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <AnchorPane fx:id="scene" layoutX="744.0" layoutY="163.0" prefHeight="450.0" prefWidth="518.0" />
    </children>
 </AnchorPane>

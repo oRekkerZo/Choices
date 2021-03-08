@@ -35,6 +35,9 @@ public class GamePlayController implements Initializable {
     @FXML
     Text volumeText;
 
+    @FXML
+    Pane scene;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,6 +82,9 @@ public class GamePlayController implements Initializable {
 
             }
         });
+
+
+        ChangingScenes();
     }
 
     public void Mute(){
@@ -112,5 +118,13 @@ public class GamePlayController implements Initializable {
         newStage.showAndWait();
 
         gamePane.setDisable(false);
+    }
+
+    public void ChangingScenes(){
+
+        scene.getStylesheets().add(getClass().getResource("../resources/menu pictures.css").toExternalForm());
+        scene.getStyleClass().add("gameplayScene");
+        scene.setStyle("-fx-image: gameplayScene");
+
     }
 }
