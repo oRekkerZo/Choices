@@ -60,22 +60,22 @@ public class GamePlayController implements Initializable {
 
     Question[] questions = {
             new Question("Welcome to the Game",0,"Introduction to the game.","/resources/pictures/7-Eleven.jpg",
-                    "1st Question",1,"2nd Question",2,"3rd Question",3),
+                    "1st Question",1,"2nd Question",2,"3rd Question",3,"/resources/Game Scene.wav"),
 
             new Question("1st Question",1,"Introduction to the game.","/resources/pictures/7-Eleven.jpg",
-                    "2nd Question",2,"3rd Question",3,"4th Question",4),
+                    "2nd Question",2,"3rd Question",3,"4th Question",4,"/resources/Game Scene.wav"),
 
             new Question("2nd Question",2,"Introduction to the game.","/resources/pictures/7-Eleven.jpg",
-                    "3rd Question",3,"4th Question",4,"Final Question",5),
+                    "3rd Question",3,"4th Question",4,"Final Question",5,"/resources/Game Scene.wav"),
 
             new Question("3rd Question",3,"Introduction to the game.","/resources/pictures/7-Eleven.jpg",
-                    "4th Question",4,"Final Question",5,"Final Question",5),
+                    "4th Question",4,"Final Question",5,"Final Question",5,"/resources/Game Scene.wav"),
 
             new Question("4th Question",4,"Introduction to the game.","/resources/pictures/7-Eleven.jpg",
-                    "Final Question",5,"Final Question",5,"Final Question",5),
+                    "Final Question",5,"Final Question",5,"Final Question",5,"/resources/FourthQuestion.wav"),
 
             new Question("Final Question",5,"Introduction to the game.","/resources/pictures/7-Eleven.jpg",
-                    "The End",0,"The End",0,"The End",0)
+                    "The End",0,"The End",0,"The End",0,"/resources/Game Scene.wav")
     };
 
     Question currentQuestion;
@@ -85,13 +85,17 @@ public class GamePlayController implements Initializable {
 
         currentQuestion = questions[0];
 
-        SetDisplayQuestion(currentQuestion);
-
+        try {
+            SetDisplayQuestion(currentQuestion);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
 
         Main.songPlayer.stop();
         try {
             Main.mainSong = new Media(getClass().getResource("/resources/Game Scene.wav").toURI().toString());
+            Main.currentPlayingSong = "/resources/Game Scene.wav";
             Main.songPlayer = new MediaPlayer(Main.mainSong);
             Main.songPlayer.setOnEndOfMedia(() -> Main.songPlayer.seek(Duration.ZERO));
             Main.songPlayer.setVolume(Main.volume);
@@ -171,11 +175,26 @@ public class GamePlayController implements Initializable {
 
         currentQuestion = questions[nextQuestionID];
 
-        SetDisplayQuestion(currentQuestion);
+        try {
+            SetDisplayQuestion(currentQuestion);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void SetDisplayQuestion(Question question){
+    public void SetDisplayQuestion(Question question) throws URISyntaxException {
+
+        if(!question.currentSong.equalsIgnoreCase(Main.currentPlayingSong)){
+            Main.mainSong = new Media(getClass().getResource(question.currentSong).toURI().toString());
+            Main.currentPlayingSong = question.currentSong;
+            Main.songPlayer = new MediaPlayer(Main.mainSong);
+            Main.songPlayer.setOnEndOfMedia(() -> Main.songPlayer.seek(Duration.ZERO));
+            Main.songPlayer.setVolume(Main.volume);
+            if(Main.musicIsPlaying){
+                Main.songPlayer.play();
+            }
+        }
 
         questionTitle.setText(question.eventTitle);
         questionDescription.setText(question.descriptionText);
