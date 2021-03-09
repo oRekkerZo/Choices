@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -40,6 +42,15 @@ public class MainMenuController implements Initializable {
     Pane backgroundColour;
 
     @FXML
+    ImageView angryPepe;
+
+    @FXML
+    ImageView pepeTalk;
+
+    @FXML
+    ImageView sevenEleven;
+
+    @FXML
     CheckBox checkBox;
 
     @FXML
@@ -54,6 +65,9 @@ public class MainMenuController implements Initializable {
         authorText.setText("By: Ricky");
         button.setText("Start Game");
         exitButton.setText("Exit Game");
+        angryPepe.setImage(new Image("/resources/pictures/angry-pepe.png"));
+        pepeTalk.setImage(new Image("/resources/pictures/word-cloud.png"));
+        sevenEleven.setImage(new Image("/resources/pictures/7-Eleven.jpg"));
 
         Main.songPlayer.stop();
 

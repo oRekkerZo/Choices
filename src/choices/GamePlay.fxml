@@ -25,7 +25,7 @@
          </font></TextArea>
       <MenuBar prefHeight="25.0" prefWidth="1280.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Esc">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#ReturnMenu" text="Return to Main Menu" />
             </items>
