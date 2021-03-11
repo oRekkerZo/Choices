@@ -251,6 +251,7 @@ public class GamePlayController implements Initializable {
     public void SetDisplayQuestion(Question question) throws URISyntaxException {
 
         if(!question.currentSong.equalsIgnoreCase(Main.currentPlayingSong)){
+            Main.songPlayer.stop();
             Main.mainSong = new Media(getClass().getResource(question.currentSong).toURI().toString());
             Main.currentPlayingSong = question.currentSong;
             Main.songPlayer = new MediaPlayer(Main.mainSong);
